@@ -4,7 +4,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   height: 640px;
-  background-image: url('/pokedex.png');
+  background-image: url('/pokedex_for_suspense_practice/pokedex.png');
 
   .pokemon_image {
     position: absolute;
@@ -24,51 +24,20 @@ const Container = styled.div`
     text-transform: capitalize;
   }
 
-  form {
+  input {
     position: absolute;
     width: 65%;
     top: 68%;
     left: 18%;
-
-    input {
-      width: 100%;
-      padding: 4%;
-      outline: none;
-      border: 2px solid #333;
-      border-radius: 5px;
-      font-size: 600;
-      color: #3a444d;
-      font-size: clamp(8px, 5vw, 1rem);
-      box-shadow: -3px 4px 0 #888, -5px 7px 0 #333;
-    }
-  }
-`
-
-const Buttons = styled.div`
-  position: absolute;
-  bottom: 10%;
-  left: 55%;
-  width: 65%;
-  transform: translate(-57%, 0);
-  display: flex;
-  gap: 20px;
-
-  .button {
-    width: 50%;
     padding: 4%;
-    border: 2px solid #000;
+    outline: none;
+    border: 2px solid #333;
     border-radius: 5px;
+    font-size: 600;
+    color: #3a444d;
     font-size: clamp(8px, 5vw, 1rem);
-    font-weight: 600;
-    color: white;
-    background-color: #444;
-    box-shadow: -2px 3px 0 #222, -4px 6px 0 #000;
-
-    &:active {
-      box-shadow: inset 2px 3px 0 #222;
-      font-size: 0.9rem;
-    }
+    box-shadow: -3px 4px 0 #888, -5px 7px 0 #333;
   }
 `
 
-export { Container, Buttons }
+export { Container }

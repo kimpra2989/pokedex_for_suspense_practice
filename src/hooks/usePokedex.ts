@@ -1,28 +1,37 @@
-import { Dispatch, FormEventHandler, SetStateAction, useState } from 'react'
+import { FIRST_POKEMON_INDEX, LAST_POKEMON_INDEX } from '@/constants'
+import { ChangeEventHandler, useState } from 'react'
 
-const usePokedex = (setSearchKeyword: Dispatch<SetStateAction<string>>) => {
-  const [inputValue, setInputValue] = useState('')
+const usePokedex = () => {
+  const [inputValue, setInputValue] = useState<number>(1)
 
-  const searchWithKeyword: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault()
-    setSearchKeyword(inputValue)
-    setInputValue('')
+  const isFirstPokemon = inputValue === FIRST_POKEMON_INDEX
+  const isLastPokemon = inputValue === LAST_POKEMON_INDEX
+
+  const handleInputChange: ChangeEventHandler<HTMLInputElement> = (e) => {
+    const value = +e.target.value
+    if (value > LAST_POKEMON_INDEX) return setInputValue(LAST_POKEMON_INDEX)
+    if (value < FIRST_POKEMON_INDEX) return setInputValue(FIRST_POKEMON_INDEX)
+
+    setInputValue(value)
   }
 
   const searchPrevPokemon = () => {
-    setSearchKeyword((prev) => String(+prev - 1))
+    if (isFirstPokemon) return
+    setInputValue((prev) => prev - 1)
   }
 
   const searchNextPokemon = () => {
-    setSearchKeyword((prev) => String(+prev + 1))
+    if (isLastPokemon) return
+    setInputValue((prev) => prev + 1)
   }
 
   return {
     inputValue,
-    setInputValue,
-    searchWithKeyword,
-    searchPrevPokemon,
+    handleInputChange,
     searchNextPokemon,
+    searchPrevPokemon,
+    isFirstPokemon,
+    isLastPokemon,
   }
 }
 
