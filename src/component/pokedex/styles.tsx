@@ -14,6 +14,47 @@ const Container = styled.div`
     height: 18%;
   }
 
+  .error-message {
+    position: absolute;
+    bottom: 53%;
+    margin: 0 auto;
+    left: 55%;
+    transform: translate(-63%, 20%);
+    height: 18%;
+    color: red;
+    font-size: 24px;
+    font-weight: bold;
+    z-index: 5;
+    backdrop-filter: blur(3px);
+  }
+
+  .dimmed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 255px;
+    height: 170px;
+    border-radius: 14px;
+    transform: translateY(170px);
+    background-color: gray;
+    opacity: 0.2;
+  }
+
+  .error {
+    opacity: 0.3;
+  }
+
+  .reset-button {
+    padding: 6px 12px;
+    background-color: transparent;
+    margin-top: 14px;
+    border-radius: 4px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
   .pokemon_data {
     position: absolute;
     font-weight: 600;

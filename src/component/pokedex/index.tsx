@@ -15,14 +15,16 @@ function PokeDex() {
     isLastPokemon,
   } = usePokedex()
 
-  const { PokemonData, isLoading, error } = useFetchPokemonData(inputValue)
+  const { pokemonData, isLoading, error, retry } =
+    useFetchPokemonData(inputValue)
 
   return (
     <Container>
       <PokemonInfo
-        pokemonData={PokemonData}
+        pokemonData={pokemonData}
         isLoading={isLoading}
         error={error}
+        retry={retry}
       />
 
       <SearchInput value={inputValue} onChange={handleInputChange} />

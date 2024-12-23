@@ -35,4 +35,5 @@ const usePokedex = () => {
   }
 }
 
+export type PokedexHookReturnType = ReturnType<typeof usePokedex>
 export default usePokedex

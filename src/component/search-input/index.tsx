@@ -1,8 +1,8 @@
-import { ChangeEventHandler } from 'react'
+import { PokedexHookReturnType } from '@/hooks/usePokedex'
 
 interface Props {
-  value: number
-  onChange: ChangeEventHandler<HTMLInputElement>
+  value: PokedexHookReturnType['inputValue']
+  onChange: PokedexHookReturnType['handleInputChange']
 }
 
 function SearchInput({ value, onChange }: Props) {

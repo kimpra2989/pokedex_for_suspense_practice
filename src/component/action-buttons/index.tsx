@@ -1,10 +1,11 @@
+import { PokedexHookReturnType } from '@/hooks/usePokedex'
 import Buttons from './styles'
 
 interface Props {
-  disablePrev?: boolean
-  disableNext?: boolean
-  searchPrevPokemon: () => void
-  searchNextPokemon: () => void
+  disablePrev?: PokedexHookReturnType['isFirstPokemon']
+  disableNext?: PokedexHookReturnType['isLastPokemon']
+  searchPrevPokemon: PokedexHookReturnType['searchPrevPokemon']
+  searchNextPokemon: PokedexHookReturnType['searchNextPokemon']
 }
 
 function ActionButtons({
