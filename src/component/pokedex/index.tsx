@@ -1,4 +1,3 @@
-import useFetchPokemonData from '@/hooks/useFetchPokemonData'
 import usePokedex from '@/hooks/usePokedex'
 import ActionButtons from '../action-buttons'
 import PokemonInfo from '../pokemon-info'
@@ -15,17 +14,9 @@ function PokeDex() {
     isLastPokemon,
   } = usePokedex()
 
-  const { pokemonData, isLoading, error, retry } =
-    useFetchPokemonData(inputValue)
-
   return (
     <Container>
-      <PokemonInfo
-        pokemonData={pokemonData}
-        isLoading={isLoading}
-        error={error}
-        retry={retry}
-      />
+      <PokemonInfo pokemonId={inputValue} />
 
       <SearchInput value={inputValue} onChange={handleInputChange} />
 

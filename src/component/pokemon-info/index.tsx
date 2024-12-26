@@ -1,14 +1,15 @@
-import { FetchPokemonHookReturnType } from '@/hooks/useFetchPokemonData'
+import useFetchPokemonData from '@/hooks/useFetchPokemonData'
+import { PokedexHookReturnType } from '@/hooks/usePokedex'
 import Warning_Icon from '/warning.svg'
 
 interface Props {
-  isLoading: FetchPokemonHookReturnType['isLoading']
-  error: FetchPokemonHookReturnType['error']
-  pokemonData?: FetchPokemonHookReturnType['pokemonData']
-  retry: FetchPokemonHookReturnType['retry']
+  pokemonId: PokedexHookReturnType['inputValue']
 }
 
-function PokemonInfo({ pokemonData, isLoading, error, retry }: Props) {
+function PokemonInfo({ pokemonId }: Props) {
+  const { pokemonData, isLoading, error, retry } =
+    useFetchPokemonData(pokemonId)
+
   if (isLoading) return <div className="dimmed" />
 
   if (error || !pokemonData)
