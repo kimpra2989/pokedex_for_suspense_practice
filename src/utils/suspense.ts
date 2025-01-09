@@ -1,10 +1,17 @@
+export function preloadImage(src: string) {
+  return new Promise((resolve) => {
+    const img = document.createElement('img')
+    img.src = src
+    img.onload = () => resolve(src)
+  })
+}
+
 export function processPromiseForSuspense<T>(promise: Promise<T>) {
   let status = 'pending'
-  let data: T
-  let result = promise.then(
+  let result : Promise<void> | T = promise.then(
     (resolved) => {
       status = 'success'
-      data = resolved
+      result = resolved
     },
     (rejected) => {
       status = 'error'
@@ -15,7 +22,7 @@ export function processPromiseForSuspense<T>(promise: Promise<T>) {
     read() {
       if (status === 'pending') throw result
       if (status === 'error') throw result
-      if (status === 'success') return data
+      if (status === 'success') return result
     },
   }
 }
